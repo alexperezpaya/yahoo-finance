@@ -80,7 +80,7 @@ class YahooFinanceTest < Test::Unit::TestCase
   def test_recognizes_csv_strings
     ycl = YahooFinance::Client.new
     quotes = ycl.quotes(['GOOG'], [:name])
-    assert_no_match /^\'/, quotes.first.name
+    assert_no_match (/^\'/), quotes.first.name
   end
 
   def test_symbols
