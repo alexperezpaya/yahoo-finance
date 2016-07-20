@@ -23,6 +23,7 @@ module YahooFinance
       change_and_percent_change: 'c',
       change: 'c1',
       comission: 'c3',
+      currency: 'c4',
       change_real_time: 'c6',
       after_hours_change_real_time: 'c8',
       dividend_per_share: 'd',

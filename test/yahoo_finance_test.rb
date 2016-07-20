@@ -21,11 +21,11 @@ class YahooFinanceTest < Test::Unit::TestCase
   end
 
   def test_quote
-    columns = [:open, :high, :low, :close, :volume, :last_trade_price]
+    columns = [:open, :high, :low, :close, :volume, :currency, :last_trade_price]
     ycl = YahooFinance::Client.new
     quote = ycl.quote('AAPL', columns)
     columns.each do |col|
-      assert quote.send(col), 'quote.#{col} was nil #{quote}'
+      assert !quote[col].nil?, 'quote.#{col} was nil #{quote}'
     end
   end
 
@@ -47,7 +47,7 @@ class YahooFinanceTest < Test::Unit::TestCase
     q = ycl.historical_quotes(
       'MSFT', raw: false, period: :daily, start_date: days_ago(40))
     [:trade_date, :open, :high, :low, :close, :volume, :adjusted_close].each do |col|
-      assert q.first.send(col)
+      assert q.first[col]
     end
   end
 
